@@ -1,0 +1,33 @@
+<!-- {{}}可以理解为一段js执行区域，不过语法有限制 -->
+<p>{{ name + '，你好'}}</p>
+<p>{{ 1 + 1 }}</p>
+<p>{{ name ? 1 + 1 : name}}</p>
+<p>{{ date }}</p>
+
+<!-- 属性绑定使用 [属性名] -->
+<div [id]="'box'">属性绑定</div>
+<div [id]="box">属性绑定-变量</div>
+
+<!-- classs渲染方式 -->
+<p [class] = "'item'">class绑定</p>
+<p [class] = "itemClass">class绑定</p>
+
+<h3 [class.h3-dom] = "h3Dom">hello {{ name }}</h3>
+<h3 [class] = "h3MuDom">多类名绑定</h3>
+<h3 [class] = "{'h3-dom': true, 'font-w': false, 'string': true}">类名条件渲染</h3>
+<h3 [class] = "['h3-dom', 'title-dom']">数组渲染</h3>
+
+<h3 [ngClass]="{'active': isActive}">ngClass绑定</h3>
+
+<!-- 样式绑定 -->
+<h3 [style.width]="'300px'">单一样式绑定</h3>
+<h3 [style.color]="'red'">单一样式绑定</h3>
+
+<h3 [style]="'background: red; color: #fff'">多样式绑定</h3>
+<h3 [style]="{'background': 'blue', 'color': '#fff'}">多样式绑定</h3>
+<h3 [ngStyle]="{'color': 'blue'}">ngStyle样式绑定</h3>
+<h3 [ngStyle]="{'font-size': isMax ? '24px' : '12px'}">ngStyle样式判断绑定</h3>
+
+<!-- 条件判断语法 *ngIf -->
+<div *ngIf="isMax">isMax == true</div>
+<div *ngIf="!isMax">isMax == false</div>
