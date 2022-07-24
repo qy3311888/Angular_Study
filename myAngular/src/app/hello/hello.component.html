@@ -1,33 +1,95 @@
 <!-- {{}}可以理解为一段js执行区域，不过语法有限制 -->
-<p>{{ name + '，你好'}}</p>
+<p>{{ name + "，你好" }}</p>
 <p>{{ 1 + 1 }}</p>
-<p>{{ name ? 1 + 1 : name}}</p>
+<p>{{ name ? 1 + 1 : name }}</p>
 <p>{{ date }}</p>
 
+<hr />
 <!-- 属性绑定使用 [属性名] -->
 <div [id]="'box'">属性绑定</div>
 <div [id]="box">属性绑定-变量</div>
 
+<hr />
 <!-- classs渲染方式 -->
-<p [class] = "'item'">class绑定</p>
-<p [class] = "itemClass">class绑定</p>
+<p [class]="'item'">class绑定</p>
+<p [class]="itemClass">class绑定</p>
 
-<h3 [class.h3-dom] = "h3Dom">hello {{ name }}</h3>
-<h3 [class] = "h3MuDom">多类名绑定</h3>
-<h3 [class] = "{'h3-dom': true, 'font-w': false, 'string': true}">类名条件渲染</h3>
-<h3 [class] = "['h3-dom', 'title-dom']">数组渲染</h3>
+<h3 [class.h3-dom]="h3Dom">hello {{ name }}</h3>
+<h3 [class]="h3MuDom">多类名绑定</h3>
+<h3 [class]="{ 'h3-dom': true, 'font-w': false, string: true }">
+  类名条件渲染
+</h3>
+<h3 [class]="['h3-dom', 'title-dom']">数组渲染</h3>
 
-<h3 [ngClass]="{'active': isActive}">ngClass绑定</h3>
+<h3 [ngClass]="{ active: isActive }">ngClass绑定</h3>
 
+<hr />
 <!-- 样式绑定 -->
 <h3 [style.width]="'300px'">单一样式绑定</h3>
 <h3 [style.color]="'red'">单一样式绑定</h3>
 
 <h3 [style]="'background: red; color: #fff'">多样式绑定</h3>
-<h3 [style]="{'background': 'blue', 'color': '#fff'}">多样式绑定</h3>
-<h3 [ngStyle]="{'color': 'blue'}">ngStyle样式绑定</h3>
-<h3 [ngStyle]="{'font-size': isMax ? '24px' : '12px'}">ngStyle样式判断绑定</h3>
+<h3 [style]="{ background: 'blue', color: '#fff' }">多样式绑定</h3>
+<h3 [ngStyle]="{ color: 'blue' }">ngStyle样式绑定</h3>
+<h3 [ngStyle]="{ 'font-size': isMax ? '24px' : '12px' }">
+  ngStyle样式判断绑定
+</h3>
 
+<hr />
 <!-- 条件判断语法 *ngIf -->
 <div *ngIf="isMax">isMax == true</div>
 <div *ngIf="!isMax">isMax == false</div>
+
+<hr />
+<!-- for循环语句 -->
+<div *ngFor="let item of colors; let i = index; let isOdd = odd">
+  {{ odd }}
+  {{ i }}
+  {{ color }}
+</div>
+
+<!-- switch循环 -->
+<div [ngSwitch]="type">
+  <p *ngSwitchCase="1">type = 1</p>
+  <p *ngSwitchCase="2">type = 2</p>
+  <p *ngSwitchDefault>type != 1 && type != 2</p>
+</div>
+
+<hr />
+<!-- 事件绑定（事件类型） = “执行函数” -->
+<input type="text" (input)="inputChange($event)" />
+<button (click)="clickFun($event)">点击</button>
+
+<hr />
+<!-- 模板引用变量 -->
+<div #box>
+  <input #userName type="text" name="" id="" />
+</div>
+<button (click)="getUserName(userName.value)">获取UserName</button>
+
+<hr />
+<!-- 数据双向绑定 *ngModel只对表单元素有效 -->
+<input [(ngModel)]="title" type="text" />
+<p>标题 : {{ title }}</p>
+
+<hr />
+<!-- 动态表单，可以使用多组 -->
+<input type="text" [formControl]="age" />
+<br />
+<p>年龄 : {{ age.value }}</p>
+<button (click)="ageChangeFun()">长大</button>
+
+<hr />
+<!-- 动态表单控件组 -->
+<form [formGroup]="loginForm">
+  <label>
+    账号：
+    <input type="text" formControlName="userName" />
+  </label>
+  <label>
+    密码：
+    <input type="text" formControlName="passWord" />
+  </label>
+
+  <button (click)="subFormFun()">提交</button>
+</form>
