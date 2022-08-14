@@ -96,26 +96,13 @@
 
 <hr/>
 <!--表单验证-->
-<form action="">
-  账号：<input
-  required
-  #nameInp="ngModel"
-  type="text"
-  [(ngModel)]="formData.name"
-  name="userName"
-/>
+<form action="">账号：<input required #nameInp="ngModel" type="text" [(ngModel)]="formData.name" name="userName"/>
   <br/>
   <!--  验证是否通过  -->
   <!--  <span>验证结果：{{nameInp.valid}}</span>  -->
   <span *ngIf="!nameInp.valid">请输入账号</span>
   <hr/>
-  密码：<input n
-            required
-            #pasInp="ngModel"
-            type="text"
-            [(ngModel)]="formData.password"
-            name="userPassword"
-/>
+  密码：<input required #pasInp="ngModel" type="password" [(ngModel)]="formData.password" name="userPassword"/>
   <br/>
   <span>验证结果：{{ pasInp.valid }}</span>
   <hr/>

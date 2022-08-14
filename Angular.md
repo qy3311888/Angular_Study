@@ -234,7 +234,7 @@ ageChangeFun() {
 
 
 
-#### 3.4.10 表单控制分组
+#### 3.4.10 表单控件分组
 
 ```html
 <form [formGroup]="loginForm">
@@ -262,5 +262,22 @@ loginForm = new FormGroup({
 subFormFun() {
     console.log(this.loginForm.value);
 }
+```
+
+我们可以通过`ngModel`跟踪修改状态与有效性验证，它使用了三个CSS类来更新控件，以便反映当前状态。
+
+| 状态             | 为`true`时的类 | 为`false`时的类 |
+| ---------------- | -------------- | --------------- |
+| 控件已经被访问过 | `ng-touched`   | `ng-untouched`  |
+| 控件值已经变化   | `ng-dirty`     | `ng-pristine`   |
+| 控件值是有效的   | `ng-valid`     | `ng-invalid`    |
+
+
+
+#### 3.3.11 自定义表单验证
+
+先引入表单的一些内置依赖
+
+```typescript
 ```
 

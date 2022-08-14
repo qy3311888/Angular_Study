@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -7,7 +7,8 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./hello.component.less'],
 })
 export class HelloComponent implements OnInit {
-  constructor() {
+  // 构造函数中注入FormBuilder
+  constructor(private formBuilder: FormBuilder) {
   }
 
   name = 'qy';
@@ -29,6 +30,12 @@ export class HelloComponent implements OnInit {
   formData = {
     name: '',
     password: ''
+  };
+
+  // 错误提醒数据
+  formErrors = {
+    tittle: '',
+    content: ''
   };
 
   ngOnInit(): void {
