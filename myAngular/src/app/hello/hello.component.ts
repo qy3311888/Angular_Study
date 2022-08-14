@@ -37,25 +37,25 @@ export class HelloComponent implements OnInit {
   clickFun = (e: Event) => {
     console.log(e);
     alert('你点击了按钮');
-  };
+  }
 
   inputChange = (e: any) => {
     console.log(e.target.value);
-  };
+  }
 
   getUserName = (v: string) => {
     console.log(v);
-  };
+  }
 
   ageChangeFun = () => {
     this.age.setValue(18);
-  };
+  }
 
   subFormFun = () => {
     console.log(this.loginForm.value);
-  };
+  }
 
   subBtnFun = (obj: any) => {
     console.log(obj);
-  };
+  }
 }
