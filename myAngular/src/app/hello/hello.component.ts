@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -7,7 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./hello.component.less'],
 })
 export class HelloComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   name = 'qy';
   date: Date = new Date();
@@ -30,30 +31,31 @@ export class HelloComponent implements OnInit {
     password: ''
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   clickFun = (e: Event) => {
     console.log(e);
     alert('你点击了按钮');
-  }
+  };
 
   inputChange = (e: any) => {
     console.log(e.target.value);
-  }
+  };
 
   getUserName = (v: string) => {
     console.log(v);
-  }
+  };
 
   ageChangeFun = () => {
     this.age.setValue(18);
-  }
+  };
 
   subFormFun = () => {
     console.log(this.loginForm.value);
-  }
+  };
 
   subBtnFun = (obj: any) => {
     console.log(obj);
-  }
+  };
 }
